@@ -1,26 +1,27 @@
-def ache_o_anagrama(texto):
+def quantosAnagramaTem(palavra):
 
-    if len(texto) <= 1:
-        return [texto]
+    if len(palavra) <= 1:
+        return [palavra]
 
-    textos = [ ]
+    palavras = [ ]
 
-    for anagrama in range(len(texto)):
+    for indice in range(len(palavra)):
 
-        atualiza_caracteres = texto[anagrama]
-
-
-        resto_do_texto = texto[:anagrama] + texto[anagrama+1:]
+        contagem__de_caracteres = palavra[indice]
 
 
-        for sub_anagrama in ache_o_anagrama(resto_do_texto):
-            textos.append(atualiza_caracteres + sub_anagrama)
+        resto_do_texto = palavra[:indice] + palavra[indice+1:]
 
 
-    return list(dict.fromkeys(textos))
+        for anagrama in quantosAnagramaTem (resto_do_texto):
+            palavras.append(contagem__de_caracteres + anagrama)
+
+    lista_anagramas = list(dict.fromkeys(palavras))
+    
+    return lista_anagramas
 
 
 palavra = input("digite uma palavra: ")
-resultado = ache_o_anagrama(palavra)
+resultado = quantosAnagramaTem(palavra)
 print(f"a palavra {palavra} contem o total de anagramas: {len(resultado)}")
 print(resultado)
